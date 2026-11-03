@@ -17,17 +17,41 @@ npm start
 
 Abre `http://localhost:3000`. El servidor escucha en `0.0.0.0` y respeta `PORT`. La base de datos local se crea en `data/dominio.sqlite`; no se sube al repositorio.
 
-## Render
+## Render Free · despliegue manual
 
-`render.yaml` prepara un único Web Service llamado **dominiolatam**, con Node 24, prueba de salud `/healthz` y un disco persistente de 1 GB montado en `/var/data`.
+`render.yaml` configura un único Web Service **Free**, llamado **dominiolatam**, con Node 24 y prueba de salud `/healthz`. No crea discos ni bases de datos de pago.
 
-1. Conecta este repositorio privado con tu cuenta de Render y selecciona el espacio de trabajo correcto.
-2. Revisa el Blueprint y autoriza el costo antes de aplicarlo: instancia mínima Starter (0.5 CPU / 512 MB), USD 7/mes, más disco, USD 0.25/mes. Tarifas base consultadas el 3 de noviembre de 2026; pueden existir impuestos o consumos adicionales.
-3. Confirma que el despliegue esté `Live`, `/healthz` responda 200 y una sala sobreviva un reinicio.
+En Render, crea un **Web Service** desde este repositorio y usa:
 
-El destino deseado es `https://dominiolatam.onrender.com`; Render asigna la URL definitiva según disponibilidad. La configuración usa `RENDER_EXTERNAL_URL`, proporcionada por Render. Para otro proxy establece `APP_ORIGIN=https://tu-dominio` y `NODE_ENV=production`.
+| Campo | Valor |
+| --- | --- |
+| Branch | `main` |
+| Name | `dominiolatam` |
+| Runtime | Node |
+| Build Command | `npm ci --ignore-scripts && npm test` |
+| Start Command | `npm start` |
+| Instance Type | **Free** |
+| Health Check Path | `/healthz` |
 
-**No uses un disco efímero para esta edición multijugador.** El plan gratuito de Render pierde archivos locales al reiniciarse o suspenderse; su PostgreSQL gratuito caduca a los 30 días. El Blueprint requiere autorización del propietario antes de crear recursos de pago. El disco limita este diseño a una instancia, con una breve interrupción durante los despliegues; los datos y el reloj lógico se recuperan después.
+Variables de entorno:
+
+```text
+NODE_ENV=production
+DATABASE_PATH=/tmp/dominio.sqlite
+PERSISTENCE_MODE=ephemeral
+```
+
+Render proporciona `PORT` y `RENDER_EXTERNAL_URL` automáticamente. También puedes usar el Blueprint incluido; revisa que siga mostrando **Free** antes de aplicarlo. Comprueba el estado `Live` y una respuesta 200 en `/healthz`.
+
+La URL solicitada es `https://dominiolatam.onrender.com`; Render confirma su disponibilidad durante la creación.
+
+### Guardado en la edición gratuita
+
+La campaña individual se guarda en el navegador. Las salas admiten hasta 20 humanos y chat, pero **las cuentas, las salas y el chat son temporales**: Render Free elimina los archivos locales al reiniciar, desplegar de nuevo o entrar en reposo. La interfaz lo anuncia antes de crear una cuenta o una sala. La clave de recuperación permite cambiar una contraseña mientras exista la cuenta; no recupera una base borrada.
+
+Para conservar las salas después de esos reinicios hace falta conectar almacenamiento externo duradero y adaptar el servidor a ese proveedor. El repositorio actual usa SQLite local y **no incluye esa integración**. No se aprovisiona PostgreSQL Free de Render: caduca a los 30 días.
+
+El servicio gratuito entra en reposo tras 15 minutos sin tráfico y puede tardar alrededor de un minuto en volver. Render aplica cuotas de horas, transferencia y compilación; comprueba los límites de gasto en Billing si tienes un medio de pago asociado para evitar cargos por excedentes.
 
 ## Cuentas y partidas
 
@@ -35,12 +59,12 @@ El destino deseado es `https://dominiolatam.onrender.com`; Render asigna la URL 
 - Para salas se crea un usuario de Dominio. La contraseña se guarda con scrypt; las sesiones usan cookies HttpOnly/Secure en producción y un identificador aleatorio guardado como hash en la base.
 - Una clave de recuperación se muestra una sola vez. Recuperar una cuenta rota esa clave y cierra las sesiones anteriores; no se requiere un proveedor de correo.
 - Las salas y los mensajes se guardan en SQLite. La identidad se resuelve exclusivamente en el servidor; no se confía en cabeceras de identidad enviadas por el navegador.
-- El reloj usa plazos absolutos. Si todos cierran el navegador, al reconectar se aplican los turnos vencidos; no se pausa la campaña ni se duplican acciones.
+- El reloj usa plazos absolutos. Si todos cierran el navegador, al reconectar se aplican los turnos vencidos si la sala sigue disponible; no se duplican acciones.
 - La nueva URL tiene su propia base de datos y almacenamiento del navegador. No importa automáticamente cuentas, salas ni campañas de la edición anterior.
 
 ## Datos y copias
 
-`DATABASE_PATH` debe apuntar al disco persistente. Las migraciones iniciales son idempotentes y se ejecutan al iniciar. Las copias consistentes se crean con la API de backup de SQLite:
+En un despliegue con almacenamiento duradero, `DATABASE_PATH` debe apuntar a ese almacenamiento. En Free, la ruta temporal no conserva copias tras un reinicio. Las migraciones iniciales son idempotentes y se ejecutan al iniciar. Las copias consistentes se crean con la API de backup de SQLite:
 
 ```sh
 npm run backup

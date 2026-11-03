@@ -14,6 +14,7 @@ const MIME = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset
   '.webp':'image/webp','.ico':'image/x-icon','.glb':'model/gltf-binary','.ttf':'font/ttf','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8'};
 
 export function createApplication({databasePath = process.env.DATABASE_PATH || './data/dominio.sqlite',
+  persistenceMode = process.env.PERSISTENCE_MODE || 'persistent',
   origin = process.env.APP_ORIGIN || process.env.RENDER_EXTERNAL_URL || '',
   production = process.env.NODE_ENV === 'production', renderProxy = process.env.RENDER === 'true'} = {}) {
   if (production && !origin) throw new Error('APP_ORIGIN or RENDER_EXTERNAL_URL is required in production.');
@@ -41,6 +42,9 @@ export function createApplication({databasePath = process.env.DATABASE_PATH || '
       if (url.pathname === '/healthz') {
         db.sqlite.prepare('SELECT 1').get();
         return send({status:'ok',game:'DOMINIO — Last Frontier: Latinoamérica'});
+      }
+      if (url.pathname === '/api/hosting' && req.method === 'GET') {
+        return send({persistence:persistenceMode==='ephemeral'?'ephemeral':'persistent'});
       }
       if (url.pathname.startsWith('/api/')) {
         if (!['GET','POST'].includes(req.method)) return send({error:'Método no permitido.'},405);

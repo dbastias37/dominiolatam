@@ -1,4 +1,10 @@
+import {hostingInfo,storageNotice} from './hosting.js';
 const $ = selector => document.querySelector(selector);
+hostingInfo.then(info=>{
+  if(!info.temporary)return;
+  $('#accountIntro').insertAdjacentHTML('afterend',storageNotice());
+  $('.account-lead').innerHTML='El mapa cambia.<br>Tu próximo movimiento te espera.';
+});
 let mode = 'login', busy = false, recovery = '';
 const requested = new URL(location.href).searchParams.get('returnTo');
 const destination = /^\/game\/(online|index)\.html(?:\?[^\r\n]*)?$/.test(requested || '') ? requested : '/game/online.html';

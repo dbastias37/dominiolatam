@@ -8,8 +8,8 @@ import {openDatabase,consumeLimit} from '../server/database.mjs';
 import {authAPI,getSession} from '../server/auth.mjs';
 
 const password='Una frase de prueba para Dominio 2026';
-async function launch(databasePath=':memory:') {
-  const app=createApplication({databasePath,production:false,origin:'',renderProxy:false});
+async function launch(databasePath=':memory:',persistenceMode='persistent') {
+  const app=createApplication({databasePath,persistenceMode,production:false,origin:'',renderProxy:false});
   await new Promise(resolve=>app.server.listen(0,'127.0.0.1',resolve));
   const origin='http://127.0.0.1:'+app.server.address().port;
   const request=async(path,{data,cookie,headers={},method}={})=>{
@@ -20,6 +20,16 @@ async function launch(databasePath=':memory:') {
   return {...app,request,origin};
 }
 const command=(command,payload={})=>({command,payload,nonce:crypto.randomUUID()});
+
+test('Free hosting discloses temporary storage without exposing server configuration',async()=>{
+  const app=await launch(':memory:','ephemeral');
+  try {
+    const result=await app.request('/api/hosting');
+    assert.equal(result.status,200);
+    assert.deepEqual(result.body,{persistence:'ephemeral'});
+    assert.equal(result.response.headers.get('cache-control'),'no-store');
+  } finally { await app.close(); }
+});
 
 test('HTTP serves the complete game, health and model assets, but never server files or secrets',async()=>{
   const app=await launch();

@@ -1,11 +1,10 @@
-# Persistent multiplayer requires a paid web service and its persistent disk.
-# Minimum base cost: USD 7/month compute + USD 0.25/month for 1 GB.
-# Do not apply until the account owner approves these recurring resources.
+# Free service only. No paid disk or database is provisioned.
+# Local accounts, chat and rooms are temporary on Render Free.
 services:
   - type: web
     name: dominiolatam
     runtime: node
-    plan: starter
+    plan: free
     region: virginia
     branch: main
     buildCommand: npm ci --ignore-scripts && npm test
@@ -13,12 +12,10 @@ services:
     healthCheckPath: /healthz
     autoDeployTrigger: commit
     numInstances: 1
-    disk:
-      name: dominio-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_PATH
-        value: /var/data/dominio.sqlite
+        value: /tmp/dominio.sqlite
+      - key: PERSISTENCE_MODE
+        value: ephemeral
