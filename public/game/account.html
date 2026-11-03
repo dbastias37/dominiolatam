@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b2630">
+  <title>DOMINIO — Last Frontier: Latinoamérica · Tu cuenta</title>
+  <link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./rooms.css">
+  <link rel="stylesheet" href="./branding.css"><link rel="stylesheet" href="./account.css">
+</head>
+<body class="network-game account-page">
+  <header class="account-header"><a href="./index.html">← VOLVER AL CONTINENTE</a><span>CUARTEL GENERAL / ACCESO</span></header>
+  <main class="account-layout">
+    <section class="account-intro" aria-label="DOMINIO — Last Frontier: Latinoamérica">
+      <div class="account-eyebrow">CADA BANDERA TIENE UNA HISTORIA.</div>
+      <h1 class="game-title account-title"><span class="game-title-name">DOMINIO</span><span class="game-title-subtitle">Last Frontier:</span><span class="game-title-edition">Latinoamérica</span></h1>
+      <p class="account-lead">El mapa cambia.<br>Tu lugar permanece.</p>
+      <p class="account-description">Vuelve a tus territorios, a tus aliados y a esas promesas que seguramente alguien ya rompió.</p>
+      <div class="account-notes"><span>20 BANDERAS</span><span>UNA CUENTA</span><span>PARTIDAS COMPARTIDAS</span></div>
+    </section>
+    <section class="command-card account-card" aria-label="Acceso a la sala de mando">
+      <div class="room-overline">IDENTIFICACIÓN DEL COMANDANTE</div>
+      <h2 id="accountHeading">TU SIGUIENTE MOVIMIENTO.</h2>
+      <p class="room-form-help" id="accountIntro">Entra con tu usuario de Dominio para recuperar tus salas desde cualquier dispositivo.</p>
+      <nav class="room-tabs" id="accountTabs" aria-label="Opciones de cuenta">
+        <button type="button" data-mode="login" class="active" aria-pressed="true">ENTRAR</button>
+        <button type="button" data-mode="register" aria-pressed="false">CREAR CUENTA</button>
+      </nav>
+      <form id="accountForm">
+        <label for="username">USUARIO<input id="username" name="username" minlength="3" maxlength="22" pattern="[A-Za-z0-9_]{3,22}" autocomplete="username" autocapitalize="none" spellcheck="false" required placeholder="Tu indicativo"></label>
+        <label for="recoveryCode" id="recoveryLabel" hidden>CLAVE DE RECUPERACIÓN<input id="recoveryCode" name="recoveryCode" type="password" autocomplete="off" maxlength="60" spellcheck="false"></label>
+        <label for="password"><span id="passwordLabel">CONTRASEÑA</span><input id="password" name="password" type="password" minlength="15" maxlength="128" autocomplete="current-password" required placeholder="Tu contraseña"></label>
+        <p class="room-form-help" id="passwordHelp" hidden>Usa una frase de al menos 15 caracteres. Al crear la cuenta recibirás una clave para recuperarla si olvidas la contraseña.</p>
+        <button type="submit" class="primary" id="submitAccount">ENTRAR A LA SALA DE MANDO →</button>
+        <button type="button" class="text-btn" data-mode="recover" id="recoverButton">OLVIDÉ MI CONTRASEÑA</button>
+      </form>
+      <div id="sessionPanel" hidden><p class="session-name" id="sessionName"></p><a class="primary" id="continueSession" href="./online.html">VOLVER A MIS CAMPAÑAS →</a><button class="text-btn" type="button" id="logout">CERRAR SESIÓN EN ESTE DISPOSITIVO</button></div>
+      <div id="recoveryPanel" hidden>
+        <p class="room-form-help">Guarda esta clave en tu gestor de contraseñas o en un lugar seguro. Solo se muestra ahora y permite recuperar tu cuenta sin correo.</p>
+        <output id="recoveryOutput" aria-label="Tu clave de recuperación"></output>
+        <button type="button" class="secondary" id="copyRecovery">COPIAR CLAVE</button>
+        <label class="saved-key"><input type="checkbox" id="savedRecovery"> HE GUARDADO MI CLAVE</label>
+        <button type="button" class="primary" id="finishRegistration" disabled>CONTINUAR A MIS CAMPAÑAS →</button>
+      </div>
+      <p id="accountStatus" role="alert" aria-live="polite"></p>
+      <noscript>Activa JavaScript para entrar en tu cuenta y jugar en línea.</noscript>
+    </section>
+  </main>
+  <footer class="account-footer"><span>EL RELOJ SIGUE. LA HISTORIA TAMBIÉN.</span><a href="./index.html">JUGAR CAMPAÑA INDIVIDUAL SIN CUENTA ↗</a></footer>
+  <script type="module" src="./account.js"></script>
+</body>
+</html>

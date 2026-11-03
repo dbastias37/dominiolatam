@@ -1,0 +1,37 @@
+/* Three levels, one identity: title, subtitle, regional edition. */
+.game-title{display:flex;flex-direction:column;align-items:center;width:max-content;max-width:100%;text-align:center;color:#f1ead6}
+.game-title-name{display:block;font:700 1em/.86 var(--display);letter-spacing:.015em;white-space:nowrap}
+.game-title-subtitle{display:block;margin-top:.64em;font:600 .24em/1.15 var(--display);letter-spacing:.22em;padding-left:.22em;color:#dfc28a;text-transform:uppercase;white-space:nowrap}
+.game-title-edition{display:block;align-self:stretch;margin-top:1.2em;padding:.95em 0 0 .34em;border-top:1px solid #dfc28a45;font:500 clamp(11px,.108em,14px)/1.45 var(--font);letter-spacing:.34em;color:#bcc8be;text-transform:uppercase;white-space:nowrap}
+.hero .game-title{font-size:clamp(88px,7.4vw,124px);line-height:.86;letter-spacing:0;margin:24px 0 28px}
+.game-title-loading{font-size:72px;margin:0 auto}
+.room-loading{gap:24px}
+.room-loading p{font-size:9px;letter-spacing:2.5px;color:#9fb2b1}
+.brand-lockup{display:flex;flex-direction:column;align-items:center;flex-shrink:0;text-align:center;line-height:1;letter-spacing:0}
+#brand .brand-name,.room-brand .brand-name{display:block;font:700 28px/.92 var(--display);letter-spacing:2px;padding-left:2px;color:#eee8d7}
+#brand .brand-subtitle,.room-brand .brand-subtitle{display:block;margin-top:5px;padding-left:1.6px;font:600 10px/1.1 var(--display);letter-spacing:1.6px;text-transform:uppercase;color:#d8bd88}
+#brand .brand-edition,.room-brand .brand-edition{display:block;margin-top:5px;padding-left:2px;font:500 8px/1.2 var(--font);letter-spacing:1.5px;text-transform:uppercase;color:#aebfb7}
+.room-brand{gap:13px}
+.credits-game-title{font:600 21px var(--display)!important;letter-spacing:1.5px;color:var(--ink)!important}
+.credits-game-title span{display:block;margin-top:7px;font:500 11px var(--font);letter-spacing:1px;color:var(--muted)}
+@media(max-height:760px) and (min-width:901px){.hero .game-title{font-size:88px;margin:20px 0 23px}}
+@media(max-width:900px),(max-height:540px) and (max-width:1200px){
+ .hero .game-title{font-size:clamp(80px,24.5vw,100px);margin:20px 0 24px}
+ .game-title-loading{font-size:clamp(58px,17vw,72px)}
+}
+@media(max-width:850px){
+ .room-brand .brand-name{font-size:25px}
+ .room-brand .brand-subtitle{font-size:9px;letter-spacing:1.4px;padding-left:1.4px}
+ .room-brand .brand-edition{font-size:7.5px;letter-spacing:1.3px;padding-left:1.3px}
+ .online-playing .room-brand .brand-name{font-size:21px;letter-spacing:1px;padding-left:1px}
+ .online-playing .room-brand .brand-subtitle{font-size:8px;letter-spacing:.9px;padding-left:.9px;margin-top:4px}
+ .online-playing .room-brand .brand-edition{font-size:7px;letter-spacing:.6px;padding-left:.6px;margin-top:4px}
+}
+@media(max-width:600px){
+ .room-brand .brand-mark{width:29px;height:37px;font-size:27px}
+ .room-brand{gap:9px}
+ .room-head{gap:12px}
+}
+@media(max-width:1200px) and (max-height:540px) and (orientation:landscape){
+ .hero .game-title{font-size:66px;margin:16px 0 20px}
+}

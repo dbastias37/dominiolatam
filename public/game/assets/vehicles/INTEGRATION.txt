@@ -1,0 +1,36 @@
+DOMINIO VEHICLE ASSET CONTRACT
+
+Copy this vehicles directory into the Site's dist/assets/vehicles directory.
+No Blender runtime, Python, textures, Draco decoder or remote URLs are required by the game.
+
+manifest.json has tanks and jets arrays with id, name, file, type, originalGrouping,
+triangles, bytes, dimensions, front, up, length and source.
+
+All assets use glTF +Y up and -Z forward, longitudinal length 1. Their root is
+centered horizontally and sits at minimum Y=0. Apply your normal game unit scale
+at the outer Object3D; no extra 90-degree corrective rotation is needed.
+
+Tanks contain an empty Object3D named muzzle centered on the actual dark barrel
+opening polygons. The ZSU-57-2 also has muzzle_2. Local -Z points along the bore.
+Object3D.getWorldDirection returns local +Z, so negate it or rotate (0,0,-1) by
+the marker world quaternion. Use getWorldPosition for the projectile origin.
+The root-space fallback position/direction is also in the manifest.
+
+The turretNode field gives the movable turret root name. Gun and muzzle descend
+from it. Kanonenjagdpanzer has a fixed gun and no turret node. M163, Type 80 and
+ZSU-57-2 preserve the author's small/upward barrel inclinations.
+
+Aircraft fuselages, both wings and any supplied multipart geometry are combined
+correctly. A nose node marks the nose extremum. Models contain no animation clips;
+translate and rotate the outer instance along the route tangent during gameplay.
+
+Source material colors are preserved (including blue cockpit glazing) as
+texture-free flat PBR paints. Clone materials before applying nation-specific
+color accents to instances to avoid recoloring other cached models.
+
+Centinela and Guardian are fictional game aliases for two unnamed original
+source meshes. The models are game choices, not claims about national inventories.
+A-4E/A-4M and F-111/EF-111 are related variants supplied by the artist; labels and
+nation markings should distinguish these related silhouettes in the game.
+
+Credits and source links are in ATTRIBUTION.txt. Original blend files are unchanged.

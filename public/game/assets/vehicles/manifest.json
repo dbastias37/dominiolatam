@@ -1,0 +1,1499 @@
+{
+  "version": 3,
+  "coordinateSystem": {
+    "up": "+Y",
+    "forward": "-Z",
+    "right": "+X",
+    "longitudinalLength": 1,
+    "origin": "horizontal bounds center, bottom at y=0"
+  },
+  "sources": {
+    "tanks": {
+      "file": "Low_Poly Tanks.blend",
+      "title": "Low_Poly Tanks",
+      "author": "Ishmael",
+      "url": "https://blendswap.com/blend/29639",
+      "license": "CC-BY",
+      "licenseVersion": "not stated on source page",
+      "sha256": "278181b56eab95d5d4f7473dfaeb79e914d218fa8bac7002d3c536048a93c290"
+    },
+    "jets": {
+      "file": "low poly jets.blend",
+      "title": "low poly jets",
+      "author": "Ishmael",
+      "url": "https://blendswap.com/blend/31097",
+      "license": "CC0",
+      "sha256": "21880164afddfbfe59e3e98df0fdd2f3121c53dac002edd416a9cae1fc1a77ca"
+    }
+  },
+  "tanks": [
+    {
+      "id": "amx90",
+      "name": "AMX-10 PAC 90",
+      "type": "tank",
+      "file": "amx90.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "amx10p_pak_90_hull.001",
+        "amx10p_pak90_turret",
+        "amx10p_pak90_turret.001"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1544,
+      "parts": 3,
+      "dimensions": [
+        0.4045747,
+        0.4007026,
+        1.0
+      ],
+      "muzzle": [
+        0.0010214,
+        0.3129916,
+        -0.5000002
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            0.0010214,
+            0.3129916,
+            -0.5000002
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -0.000852,
+        0.2648908,
+        0.20244
+      ],
+      "bytes": 76424
+    },
+    {
+      "id": "bmp2",
+      "name": "BMP-2",
+      "type": "tank",
+      "file": "bmp2.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "BMP2_hull",
+        "BMP2_hull.001"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1663,
+      "parts": 2,
+      "dimensions": [
+        0.4757492,
+        0.3978321,
+        1.0
+      ],
+      "muzzle": [
+        -0.0014933,
+        0.2990743,
+        -0.179448
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.0014933,
+            0.2990743,
+            -0.179448
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 9
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        0.0014293,
+        0.2603128,
+        0.1037156
+      ],
+      "bytes": 93816
+    },
+    {
+      "id": "chieftain",
+      "name": "Chieftain",
+      "type": "tank",
+      "file": "chieftain.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "chieftain_hull",
+        "chieftain_turret",
+        "chieftain_turret.002"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1908,
+      "parts": 3,
+      "dimensions": [
+        0.338654,
+        0.2832931,
+        1.0
+      ],
+      "muzzle": [
+        0.0046427,
+        0.1866494,
+        -0.4999998
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            0.0046427,
+            0.1866494,
+            -0.4999998
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 6
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        0.0050198,
+        0.1369778,
+        0.1075044
+      ],
+      "bytes": 79840
+    },
+    {
+      "id": "centinela",
+      "name": "Centinela",
+      "type": "tank",
+      "file": "centinela.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "hull",
+        "turret",
+        "gun.001"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1845,
+      "parts": 3,
+      "dimensions": [
+        0.3677849,
+        0.2743101,
+        0.9999999
+      ],
+      "muzzle": [
+        -0.0001593,
+        0.2115166,
+        -0.4999821
+      ],
+      "muzzleDirection": [
+        -4.33e-05,
+        0.0015984,
+        -0.9999987
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.0001593,
+            0.2115166,
+            -0.4999821
+          ],
+          "direction": [
+            -4.33e-05,
+            0.0015984,
+            -0.9999987
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        0.0008004,
+        0.149028,
+        0.1110845
+      ],
+      "nameNote": "Fictional in-game alias; original author did not name tank model.",
+      "bytes": 75332
+    },
+    {
+      "id": "leopard2",
+      "name": "Leopard 2A4",
+      "type": "tank",
+      "file": "leopard2.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "hull.001",
+        "leopard2a4_turret",
+        "leopard2a4_turret.005"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1705,
+      "parts": 3,
+      "dimensions": [
+        0.3690219,
+        0.2837628,
+        1.0
+      ],
+      "muzzle": [
+        -0.0004544,
+        0.2072061,
+        -0.5000005
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.0004544,
+            0.2072061,
+            -0.5000005
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        0.0043773,
+        0.225018,
+        0.0893645
+      ],
+      "bytes": 73296
+    },
+    {
+      "id": "is3",
+      "name": "IS-3",
+      "type": "tank",
+      "file": "is3.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "is_3_hull",
+        "is_3_turret",
+        "is_3_turret.001"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1887,
+      "parts": 3,
+      "dimensions": [
+        0.335557,
+        0.2952399,
+        1.0
+      ],
+      "muzzle": [
+        0.0006837,
+        0.2090281,
+        -0.5000007
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            0.0006837,
+            0.2090281,
+            -0.5000007
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        0.001741,
+        0.1815254,
+        0.0748751
+      ],
+      "bytes": 87712
+    },
+    {
+      "id": "kanone",
+      "name": "Kanonenjagdpanzer",
+      "type": "tank",
+      "file": "kanone.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "kanonepanzer.003"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1325,
+      "parts": 1,
+      "dimensions": [
+        0.3075489,
+        0.2280563,
+        1.0
+      ],
+      "muzzle": [
+        0.010626,
+        0.1474636,
+        -0.4999993
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            0.010626,
+            0.1474636,
+            -0.4999993
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": null,
+      "bytes": 81120
+    },
+    {
+      "id": "m163",
+      "name": "M163 Vulcan",
+      "type": "tank",
+      "file": "m163.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "m163_hull",
+        "m163_turret",
+        "m163_turret.001"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1090,
+      "parts": 3,
+      "dimensions": [
+        0.5774452,
+        0.6735961,
+        1.0
+      ],
+      "muzzle": [
+        -0.000252,
+        0.6593379,
+        -0.3021089
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.3816223,
+        -0.9243184
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.000252,
+            0.6593379,
+            -0.3021089
+          ],
+          "direction": [
+            0.0,
+            0.3816223,
+            -0.9243184
+          ],
+          "openingVertices": 6
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -0.0052698,
+        0.3973249,
+        0.0560779
+      ],
+      "bytes": 48364
+    },
+    {
+      "id": "m551",
+      "name": "M551 Sheridan",
+      "type": "tank",
+      "file": "m551.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "m551_hull",
+        "m551_turret",
+        "m551_turret.006"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1726,
+      "parts": 3,
+      "dimensions": [
+        0.4507473,
+        0.4403498,
+        1.0
+      ],
+      "muzzle": [
+        0.0009135,
+        0.3317116,
+        -0.5000004
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            0.0009135,
+            0.3317116,
+            -0.5000004
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        0.001407,
+        0.2399835,
+        -0.0007906
+      ],
+      "bytes": 73608
+    },
+    {
+      "id": "m60a1",
+      "name": "M60A1",
+      "type": "tank",
+      "file": "m60a1.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "m60_hull.003",
+        "m60a1_turret.003",
+        "m60a1_turret.005"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1188,
+      "parts": 3,
+      "dimensions": [
+        0.3863185,
+        0.3210727,
+        0.9999999
+      ],
+      "muzzle": [
+        0.0045645,
+        0.23619,
+        -0.5000002
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            0.0045645,
+            0.23619,
+            -0.5000002
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 6
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        1e-07,
+        0.1919629,
+        0.1298161
+      ],
+      "bytes": 65648
+    },
+    {
+      "id": "m60a2",
+      "name": "M60A2",
+      "type": "tank",
+      "file": "m60a2.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "m60_hull.002",
+        "m60a2_turret",
+        "Cylinder"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1040,
+      "parts": 3,
+      "dimensions": [
+        0.5045812,
+        0.487695,
+        1.0
+      ],
+      "muzzle": [
+        -0.0005128,
+        0.3370323,
+        -0.4571537
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.0005128,
+            0.3370323,
+            -0.4571537
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 6
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -2e-07,
+        0.2585225,
+        -0.0046939
+      ],
+      "bytes": 64308
+    },
+    {
+      "id": "marder",
+      "name": "Marder 1A2",
+      "type": "tank",
+      "file": "marder.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "marder1a2_turret",
+        "marder1a2_turret.001",
+        "marder1a2_turret.002"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1634,
+      "parts": 3,
+      "dimensions": [
+        0.4841313,
+        0.436293,
+        1.0
+      ],
+      "muzzle": [
+        0.009737,
+        0.3870684,
+        -0.1656675
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            0.009737,
+            0.3870684,
+            -0.1656675
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 6
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -5.2e-06,
+        0.2707841,
+        -0.0115389
+      ],
+      "bytes": 73356
+    },
+    {
+      "id": "type80",
+      "name": "Tipo 80",
+      "type": "tank",
+      "file": "type80.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "type_80_hull",
+        "type_80_hull.001",
+        "type_80_hull.012"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1775,
+      "parts": 3,
+      "dimensions": [
+        0.3688902,
+        0.2491257,
+        1.0
+      ],
+      "muzzle": [
+        -0.0015556,
+        0.2123994,
+        -0.499454
+      ],
+      "muzzleDirection": [
+        -1.3e-06,
+        0.0651475,
+        -0.9978756
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.0015556,
+            0.2123994,
+            -0.499454
+          ],
+          "direction": [
+            -1.3e-06,
+            0.0651475,
+            -0.9978756
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -0.0009989,
+        0.1503073,
+        0.0932007
+      ],
+      "bytes": 76612
+    },
+    {
+      "id": "type96",
+      "name": "Tipo 96",
+      "type": "tank",
+      "file": "type96.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "TYPE_96_HULL",
+        "TYPE_96_TURRET",
+        "gun.002"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 2094,
+      "parts": 3,
+      "dimensions": [
+        0.3342809,
+        0.2394334,
+        1.0
+      ],
+      "muzzle": [
+        -0.0004376,
+        0.172792,
+        -0.5
+      ],
+      "muzzleDirection": [
+        -1.22e-05,
+        -2.8e-06,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.0004376,
+            0.172792,
+            -0.5
+          ],
+          "direction": [
+            -1.22e-05,
+            -2.8e-06,
+            -1.0
+          ],
+          "openingVertices": 7
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -0.0004774,
+        0.1409424,
+        0.0787768
+      ],
+      "bytes": 117296
+    },
+    {
+      "id": "guardian",
+      "name": "Guardián",
+      "type": "tank",
+      "file": "guardian.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "ysflight_main_hull.001",
+        "ysflight_turret.001",
+        "gun"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 914,
+      "parts": 3,
+      "dimensions": [
+        0.3545174,
+        0.2891854,
+        0.9999999
+      ],
+      "muzzle": [
+        6.8e-06,
+        0.2204527,
+        -0.4999995
+      ],
+      "muzzleDirection": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            6.8e-06,
+            0.2204527,
+            -0.4999995
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "openingVertices": 6
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -9.65e-05,
+        0.1831988,
+        0.1250277
+      ],
+      "nameNote": "Fictional in-game alias; original author did not name tank model.",
+      "bytes": 49756
+    },
+    {
+      "id": "zsu57",
+      "name": "ZSU-57-2",
+      "type": "tank",
+      "file": "zsu57.glb",
+      "source": "Low_Poly Tanks.blend",
+      "originalGrouping": [
+        "ysflight_PLA_type80_hull",
+        "ysflight_zsu57_turret_2",
+        "ysflight_zsu57_turret_2.001"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1694,
+      "parts": 3,
+      "dimensions": [
+        0.395978,
+        0.3966801,
+        1.0
+      ],
+      "muzzle": [
+        -0.0349779,
+        0.3820872,
+        -0.4961198
+      ],
+      "muzzleDirection": [
+        -2.5e-06,
+        0.2569857,
+        -0.9664152
+      ],
+      "muzzles": [
+        {
+          "name": "muzzle",
+          "position": [
+            -0.0349779,
+            0.3820872,
+            -0.4961198
+          ],
+          "direction": [
+            -2.5e-06,
+            0.2569857,
+            -0.9664152
+          ],
+          "openingVertices": 6
+        },
+        {
+          "name": "muzzle_2",
+          "position": [
+            0.031689,
+            0.3820873,
+            -0.4961198
+          ],
+          "direction": [
+            -4.4e-06,
+            0.2569871,
+            -0.9664149
+          ],
+          "openingVertices": 6
+        }
+      ],
+      "turretNode": "turret.001",
+      "turretPivot": [
+        -0.0016245,
+        0.183415,
+        0.1552217
+      ],
+      "bytes": 81276
+    }
+  ],
+  "jets": [
+    {
+      "id": "a4e_skyhawk",
+      "name": "A-4E Skyhawk",
+      "type": "jet",
+      "file": "a4e_skyhawk.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "a4e_skyhawk"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1750,
+      "parts": 1,
+      "dimensions": [
+        0.6886829,
+        0.321126,
+        1.0
+      ],
+      "muzzle": [
+        -3e-07,
+        0.0371002,
+        -0.5
+      ],
+      "bytes": 48140
+    },
+    {
+      "id": "a4m_skyhawk",
+      "name": "A-4M Skyhawk",
+      "type": "jet",
+      "file": "a4m_skyhawk.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "a4m_skyhawk"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1922,
+      "parts": 1,
+      "dimensions": [
+        0.6886829,
+        0.321126,
+        1.0
+      ],
+      "muzzle": [
+        -2e-07,
+        0.0371002,
+        -0.5
+      ],
+      "bytes": 51500
+    },
+    {
+      "id": "a6e_intruder",
+      "name": "A-6E Intruder",
+      "type": "jet",
+      "file": "a6e_intruder.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "a6e_intruder"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1781,
+      "parts": 1,
+      "dimensions": [
+        0.9653506,
+        0.2682484,
+        1.0000001
+      ],
+      "muzzle": [
+        -1e-07,
+        0.0599022,
+        -0.5
+      ],
+      "bytes": 50324
+    },
+    {
+      "id": "a7e_corsair_II",
+      "name": "A-7E Corsair II",
+      "type": "jet",
+      "file": "a7e_corsair_II.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "a7e_corsair_II"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1666,
+      "parts": 1,
+      "dimensions": [
+        0.8449666,
+        0.3517527,
+        1.0000001
+      ],
+      "muzzle": [
+        -2e-07,
+        0.0742145,
+        -0.5
+      ],
+      "bytes": 64468
+    },
+    {
+      "id": "buccaneer",
+      "name": "Buccaneer",
+      "type": "jet",
+      "file": "buccaneer.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "buccaneer"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 2102,
+      "parts": 1,
+      "dimensions": [
+        0.7120696,
+        0.2225512,
+        1.0000001
+      ],
+      "muzzle": [
+        -2e-07,
+        0.0567669,
+        -0.5000001
+      ],
+      "bytes": 57412
+    },
+    {
+      "id": "ea6b_prowler",
+      "name": "EA-6B Prowler",
+      "type": "jet",
+      "file": "ea6b_prowler.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "ea6b_prowler"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 2665,
+      "parts": 1,
+      "dimensions": [
+        0.9127567,
+        0.2872524,
+        1.0000001
+      ],
+      "muzzle": [
+        3.03e-05,
+        0.1887699,
+        -0.5
+      ],
+      "bytes": 72156
+    },
+    {
+      "id": "ef_111_raven_fuselage",
+      "name": "EF-111 Raven",
+      "type": "jet",
+      "file": "ef_111_raven_fuselage.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "ef_111_raven_fuselage",
+        "ef_111_raven_wing_l",
+        "ef_111_raven_wing_r"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 2208,
+      "parts": 3,
+      "dimensions": [
+        0.8576983,
+        0.2436183,
+        1.0
+      ],
+      "muzzle": [
+        -1e-07,
+        0.0378516,
+        -0.5000001
+      ],
+      "bytes": 73080
+    },
+    {
+      "id": "eurofighter",
+      "name": "Eurofighter",
+      "type": "jet",
+      "file": "eurofighter.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "eurofighter"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1332,
+      "parts": 1,
+      "dimensions": [
+        0.6686894,
+        0.2914797,
+        1.0000001
+      ],
+      "muzzle": [
+        -4e-07,
+        0.0528954,
+        -0.5000003
+      ],
+      "bytes": 41676
+    },
+    {
+      "id": "f100_super_saber",
+      "name": "F-100 Super Sabre",
+      "type": "jet",
+      "file": "f100_super_saber.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f100_super_saber"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1128,
+      "parts": 1,
+      "dimensions": [
+        0.7947978,
+        0.2968172,
+        1.0000001
+      ],
+      "muzzle": [
+        -3e-07,
+        0.0387351,
+        -0.4999999
+      ],
+      "bytes": 39132
+    },
+    {
+      "id": "f101_voodoo",
+      "name": "F-101 Voodoo",
+      "type": "jet",
+      "file": "f101_voodoo.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f101_voodoo"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1446,
+      "parts": 1,
+      "dimensions": [
+        0.592059,
+        0.206986,
+        1.0
+      ],
+      "muzzle": [
+        -1.28e-05,
+        0.0455638,
+        -0.4999998
+      ],
+      "bytes": 41136
+    },
+    {
+      "id": "f14_tomcat",
+      "name": "F-14 Tomcat",
+      "type": "jet",
+      "file": "f14_tomcat.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f14_tomcat",
+        "f14_tomcat_wing_l",
+        "f14_tomcat_wing_r"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 2506,
+      "parts": 3,
+      "dimensions": [
+        1.002347,
+        0.2436526,
+        1.0000001
+      ],
+      "muzzle": [
+        -2.27e-05,
+        0.0525425,
+        -0.4999999
+      ],
+      "bytes": 73740
+    },
+    {
+      "id": "f15_eagle",
+      "name": "F-15 Eagle",
+      "type": "jet",
+      "file": "f15_eagle.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f15_eagle"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1926,
+      "parts": 1,
+      "dimensions": [
+        0.6738173,
+        0.2170634,
+        1.0000001
+      ],
+      "muzzle": [
+        -3e-07,
+        0.0242992,
+        -0.4999999
+      ],
+      "bytes": 62424
+    },
+    {
+      "id": "f4_phantom_II",
+      "name": "F-4 Phantom II",
+      "type": "jet",
+      "file": "f4_phantom_II.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f4_phantom_II"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1990,
+      "parts": 1,
+      "dimensions": [
+        0.6405661,
+        0.2303843,
+        1.0
+      ],
+      "muzzle": [
+        -3e-07,
+        0.0283337,
+        -0.4999999
+      ],
+      "bytes": 67836
+    },
+    {
+      "id": "f5_freedom_fighter",
+      "name": "F-5 Freedom Fighter",
+      "type": "jet",
+      "file": "f5_freedom_fighter.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f5_freedom_fighter"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1558,
+      "parts": 1,
+      "dimensions": [
+        0.5584776,
+        0.212722,
+        1.0
+      ],
+      "muzzle": [
+        -2e-07,
+        0.0265065,
+        -0.5000001
+      ],
+      "bytes": 54500
+    },
+    {
+      "id": "f7u_cutlass",
+      "name": "F7U Cutlass",
+      "type": "jet",
+      "file": "f7u_cutlass.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f7u_cutlass"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1980,
+      "parts": 1,
+      "dimensions": [
+        0.9697644,
+        0.2995069,
+        1.0
+      ],
+      "muzzle": [
+        0.0031181,
+        0.0356415,
+        -0.4999998
+      ],
+      "bytes": 52076
+    },
+    {
+      "id": "f86_saber",
+      "name": "F-86 Sabre",
+      "type": "jet",
+      "file": "f86_saber.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f86_saber"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1123,
+      "parts": 1,
+      "dimensions": [
+        1.0366521,
+        0.305172,
+        1.0
+      ],
+      "muzzle": [
+        -0.0001565,
+        0.0893812,
+        -0.5000005
+      ],
+      "bytes": 34412
+    },
+    {
+      "id": "f_111_aardvark_fuselage",
+      "name": "F-111 Aardvark",
+      "type": "jet",
+      "file": "f_111_aardvark_fuselage.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "f_111_aardvark_fuselage",
+        "f_111_aardvark_wing_l",
+        "f_111_aardvark_wing_r"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 2136,
+      "parts": 3,
+      "dimensions": [
+        0.8599241,
+        0.2040975,
+        1.0000001
+      ],
+      "muzzle": [
+        -2e-07,
+        0.0379498,
+        -0.4999999
+      ],
+      "bytes": 73868
+    },
+    {
+      "id": "jaguar",
+      "name": "Jaguar",
+      "type": "jet",
+      "file": "jaguar.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "jaguar"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1798,
+      "parts": 1,
+      "dimensions": [
+        0.5713785,
+        0.2291869,
+        1.0
+      ],
+      "muzzle": [
+        1e-07,
+        0.0457264,
+        -0.5
+      ],
+      "bytes": 50472
+    },
+    {
+      "id": "mirage_III",
+      "name": "Mirage III",
+      "type": "jet",
+      "file": "mirage_III.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "mirage_III"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1530,
+      "parts": 1,
+      "dimensions": [
+        0.6038932,
+        0.2553955,
+        1.0
+      ],
+      "muzzle": [
+        -3e-07,
+        0.0521287,
+        -0.4999999
+      ],
+      "bytes": 44412
+    },
+    {
+      "id": "rafale_B",
+      "name": "Rafale B",
+      "type": "jet",
+      "file": "rafale_B.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "rafale_B"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1726,
+      "parts": 1,
+      "dimensions": [
+        0.7010524,
+        0.2737586,
+        1.0000001
+      ],
+      "muzzle": [
+        -4e-07,
+        0.0287638,
+        -0.5
+      ],
+      "bytes": 50076
+    },
+    {
+      "id": "s3_Viking",
+      "name": "S-3 Viking",
+      "type": "jet",
+      "file": "s3_Viking.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "s3_Viking"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 2392,
+      "parts": 1,
+      "dimensions": [
+        1.2637709,
+        0.3726631,
+        1.0000001
+      ],
+      "muzzle": [
+        1e-07,
+        0.0332268,
+        -0.5000001
+      ],
+      "bytes": 66436
+    },
+    {
+      "id": "super_etendard",
+      "name": "Super Étendard",
+      "type": "jet",
+      "file": "super_etendard.glb",
+      "source": "low poly jets.blend",
+      "originalGrouping": [
+        "super_etendard"
+      ],
+      "front": "-Z",
+      "up": "+Y",
+      "length": 1,
+      "triangles": 1404,
+      "parts": 1,
+      "dimensions": [
+        0.6738222,
+        0.2278183,
+        1.0000001
+      ],
+      "muzzle": [
+        -2e-07,
+        0.0643858,
+        -0.5
+      ],
+      "bytes": 44516
+    }
+  ]
+}

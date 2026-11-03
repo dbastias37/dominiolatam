@@ -1,0 +1,13 @@
+DOMINIO: vehicle asset credits
+
+Tanks: "Low_Poly Tanks" by Ishmael.
+Source: https://blendswap.com/blend/29639
+License shown by the original source: CC-BY (version not specified on listing).
+Changes: separated collection into complete vehicles; preserved face-painted colors; normalized scale/orientation; added turret grouping and exact cannon-opening markers; converted to glTF/GLB.
+
+Aircraft: "low poly jets" by Ishmael (originally made for YSFlight).
+Source: https://blendswap.com/blend/31097
+License: CC0.
+Changes: combined split wings/fuselages, normalized scale/orientation, converted to glTF/GLB.
+
+Original .blend files supplied by the user and left unchanged. Names describe visual assets only, not the real military inventory of any country.

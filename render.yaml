@@ -1,0 +1,24 @@
+# Persistent multiplayer requires a paid web service and its persistent disk.
+# Minimum base cost: USD 7/month compute + USD 0.25/month for 1 GB.
+# Do not apply until the account owner approves these recurring resources.
+services:
+  - type: web
+    name: dominiolatam
+    runtime: node
+    plan: starter
+    region: virginia
+    branch: main
+    buildCommand: npm ci --ignore-scripts && npm test
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    numInstances: 1
+    disk:
+      name: dominio-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_PATH
+        value: /var/data/dominio.sqlite

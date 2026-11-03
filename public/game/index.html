@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102b35"><meta name="description" content="DOMINIO — Last Frontier: Latinoamérica. Conquista el continente en un juego de estrategia 3D por turnos. Una idea de Ian, creada junto a Diego y María Paz."><title>DOMINIO — Last Frontier: Latinoamérica</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23152f38'/%3E%3Cpath d='M17 12h15c22 0 22 40 0 40H17z' fill='%23dec08a'/%3E%3Cpath d='M27 22v20h6c10 0 10-20 0-20z' fill='%23152f38'/%3E%3C/svg%3E"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./mobile.css"><link rel="stylesheet" href="./branding.css"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script></head>
+<body>
+<div id="world"></div><div class="vignette"></div><div class="film-grain"></div>
+<div id="loader"><div class="game-title game-title-loading" aria-label="DOMINIO — Last Frontier: Latinoamérica"><span class="game-title-name">DOMINIO</span><span class="game-title-subtitle">Last Frontier:</span><span class="game-title-edition">Latinoamérica</span></div><p>PREPARANDO EL CONTINENTE</p><span class="loading-line"></span></div>
+<header id="topbar"><button id="brand" aria-label="DOMINIO — Last Frontier: Latinoamérica. Abrir menú"><span class="brand-emblem">D</span><span class="brand-lockup"><strong class="brand-name">DOMINIO</strong><span class="brand-subtitle">Last Frontier:</span><span class="brand-edition">Latinoamérica</span></span></button><div id="topCenter"></div><div class="top-tools"><button id="helpBtn" class="icon-btn" title="Cómo jugar" aria-label="Cómo jugar">?</button><button id="soundBtn" class="icon-btn" title="Activar sonido" aria-label="Activar sonido"></button><button id="settingsBtn" class="icon-btn" title="Menú y ajustes" aria-label="Menú y ajustes"></button></div></header>
+<main id="ui"></main>
+<nav id="mapTools" aria-label="Mover y acercar el mapa"><button data-map="in" aria-label="Acercar mapa" title="Acercar">+</button><output id="zoomValue" aria-label="Nivel de zoom">1.0×</output><button data-map="out" aria-label="Alejar mapa" title="Alejar">−</button><span class="map-tool-divider"></span><button data-map="focus" aria-label="Centrar país del turno" title="Ir al país del turno">⌖</button><button data-map="reset" aria-label="Ver todo el continente" title="Vista general">◎</button><span class="map-tool-divider"></span><button id="orbitBtn" data-map="orbit" aria-label="Activar giro del mapa" aria-pressed="false" title="Girar el mapa">↻</button><button class="mobile-camera-menu" data-ui="mapCamera" aria-label="Más controles de cámara">···</button></nav>
+<div id="mapHint">ARRASTRA PARA MOVER · RUEDA PARA ACERCAR · CLIC DERECHO PARA GIRAR</div>
+<button id="interfaceToggle" data-ui="toggleInterface" aria-label="Ocultar toda la interfaz" aria-pressed="false">SOLO MAPA</button>
+<div id="turnTravel" role="status" aria-live="polite"></div>
+<div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 50"><path d="M20 4 28 38 20 31 12 38Z" fill="#dbcea9"/><path d="M20 4v27l8 7Z" fill="#64818a"/></svg></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="sceneOverlay" role="status" aria-live="polite"></div>
+<div id="modalRoot"></div>
+<script type="module" src="./app.js"></script>
+</body></html>

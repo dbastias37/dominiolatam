@@ -1,0 +1,44 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import * as E from '../public/game/engine.js';
+import {COUNTRIES,neighbors} from '../public/game/data.js';
+import {WORLD_NEWS,calendarState,advanceCalendar,worldEvent,combatPause,campaignDate} from '../public/game/calendar.js';
+import {recruitAmount,attackBlock} from '../public/game/events.js';
+import {bombardBlock} from '../public/game/operations.js';
+import {factionFlag,factionProfile,validateFactions} from '../public/game/factions.js';
+import {rouletteView} from '../public/game/roulette.js';
+import {calendarView,factionSetupView} from '../public/game/world-ui.js';
+const clear=s=>{E.finishBattle(s);E.finishOccupation(s);E.finishMovements(s);E.acknowledge(s,s.inbox.slice());if(s.event)E.resolveEvent(s,0);};
+function ownTurn(options={}){const s=E.createGame('CHL','normal',551,options);E.drawFirst(s);E.beginCampaign(s);E.skipToPlayer(s);clear(s);s.incidents=[];s.cash=1000;return s;}
+function tick(s,n){for(let r=s.calendar.lastRound+1;r<=n;r++){s.turn=r;s.incidents=s.incidents.filter(e=>e.until>=r);advanceCalendar(s);}}
+
+test('Calendar advances a week per full round, repeats peace predictably, and survives saves',()=>{
+ const s=ownTurn();assert.equal(campaignDate(s).toISOString().slice(0,10),'2026-11-02');const date=campaignDate(s).getTime();E.action(s,'recruit','CHL');clear(s);assert.equal(campaignDate(s).getTime(),date);E.endTurn(s);E.skipToPlayer(s);clear(s);assert.equal(campaignDate(s).getTime()-date,7*86400000);
+ tick(s,8);assert.equal(worldEvent(s).kind,'peace');assert.equal(worldEvent(s).until,11);const saved=E.upgradeSave(s);assert.ok(saved);assert.deepEqual(saved.calendar,s.calendar);assert.equal(advanceCalendar(saved).started,null);for(let r=9;r<=11;r++){tick(saved,r);assert.ok(combatPause(saved));}tick(saved,12);assert.equal(combatPause(saved),null);tick(saved,20);assert.equal(worldEvent(saved).kind,'peace');assert.equal(worldEvent(saved).until,23);
+});
+test('World peace blocks player and AI attacks and bombardments, while domestic actions and transfers stay available',()=>{
+ const s=ownTurn();tick(s,8);s.countries.CHL.air=4;s.countries.CHL.bombers=true;s.countries.CHL.troops=1000;const before=JSON.stringify(s);assert.match(E.action(s,'attack','ARG','CHL').error,/Paz mundial/);assert.match(E.action(s,'bombard','ARG','CHL').error,/Paz mundial/);assert.equal(JSON.stringify(s),before);assert.match(attackBlock(s,'CHL','ARG').reason,/Paz mundial/);assert.match(bombardBlock(s,'CHL','ARG'),/Paz mundial/);assert.ok(E.action(s,'recruit','CHL').ok);clear(s);s.countries.PER.owner='CHL';assert.ok(E.action(s,'transfer','PER','CHL').ok);
+ for(let seed=1;seed<150;seed++){const a=structuredClone(s);a.phase='ai';a.ap=0;a.turnOrder=[{id:'ARG',power:1},{id:'CHL',power:1}];a.turnIndex=0;a.seed=seed;a.aiReport=null;a.countries.ARG.troops=9999;a.countries.ARG.air=4;a.countries.ARG.bombers=true;E.playAITurn(a);assert.equal(a.pendingBattle,null);assert.equal(a.countries.CHL.owner,'CHL');}
+});
+test('Satirical world events have exact temporary territorial income and recruitment effects',()=>{
+ const s=ownTurn(),base=E.countryIncome(s,s.countries.CHL);tick(s,3);assert.equal(worldEvent(s).kind,'prophecy');assert.equal(recruitAmount(s,'CHL'),29);tick(s,4);assert.equal(recruitAmount(s,'CHL'),24);tick(s,6);assert.equal(worldEvent(s).kind,'ribbon');assert.equal(E.countryIncome(s,s.countries.CHL),Math.round(base*1.15));tick(s,8);assert.equal(E.countryIncome(s,s.countries.CHL),base);assert.ok(Object.values(WORLD_NEWS).every(d=>d.headline&&d.effect&&d.advice));
+});
+test('Factions start with two countries per bloc, use valid custom flags and draw only surviving leaders',()=>{
+ for(const c of COUNTRIES){const s=E.createGame(c.id,'normal',9,{mode:'factions',partner:neighbors(c.id)[0],name:'Liga & Horizonte',color:'#43a482',symbol:'shield'});assert.equal(E.owned(s).length,2);assert.equal(E.activeFactions(s).length,10);assert.ok(validateFactions(s));assert.ok(E.validateSave(s));assert.match(decodeURIComponent(factionFlag(s.factions[c.id])),/fill="#43a482"/);E.drawFirst(s);assert.ok(E.activeFactions(s).includes(s.starter));assert.equal(s.turnOrder.length,10);assert.equal(rouletteView({...s,phase:'draw'},()=>'<svg/>').match(/data-roulette-result=/g).length,10);}
+});
+test('Factions merge complete blocs during preparation, then close mergers and open combat in round five',()=>{
+ const s=ownTurn({mode:'factions',partner:'ARG',name:'Unión del Sur'});assert.ok(combatPause(s));const c=Object.values(s.countries).find(c=>c.owner!==s.player),owner=c.owner,members=Object.values(s.countries).filter(x=>x.owner===owner).map(x=>x.id);c.relation=70;assert.ok(E.action(s,'join',c.id).ok);assert.equal(E.owned(s).length,4);assert.ok(members.every(id=>s.countries[id].owner==='CHL'));clear(s);tick(s,5);assert.equal(combatPause(s),null);const foreign=Object.values(s.countries).find(x=>x.owner!=='CHL');foreign.relation=100;const before=JSON.stringify(s);assert.match(E.action(s,'join',foreign.id).error,/ronda 5/);assert.equal(JSON.stringify(s),before);assert.ok(E.upgradeSave(s));
+});
+test('Old v4 saves acquire the calendar lazily and invalid new fields are rejected',()=>{
+ const s=ownTurn();delete s.calendar;delete s.campaignMode;delete s.pendingOccupation;delete s.fastForward;delete s.skipDeferred;assert.ok(E.upgradeSave(s));advanceCalendar(s);assert.ok(s.calendar);for(const patch of [{fastForward:'yes'},{calendar:{...s.calendar,active:{kind:'peace',start:1,until:999}}},{skipDeferred:[99999]},{campaignMode:'factions',factions:{}}])assert.equal(E.upgradeSave({...s,...patch}),null);
+});
+test('Conquest creates a separate persisted occupation and cannot spend or advance before it ends',()=>{
+ const s=ownTurn();s.countries.CHL.troops=500;s.countries.ARG.troops=1;s.seed=1;E.action(s,'attack','ARG','CHL');assert.equal(s.pendingOccupation,null);E.finishBattle(s);const o=s.pendingOccupation;assert.ok(o);assert.equal(o.owner,'CHL');assert.equal(o.previous,'ARG');assert.ok(s.inbox.includes(o.noticeId));assert.equal(s.countries.ARG.owner,'CHL');E.acknowledge(s,s.inbox.slice());assert.ok(E.action(s,'recruit','CHL').error);assert.ok(E.endTurn(s).error);const loaded=E.upgradeSave(s);assert.deepEqual(loaded.pendingOccupation,o);const cash=loaded.cash,stats=loaded.stats.battles;E.finishOccupation(loaded);E.finishOccupation(loaded);assert.equal(loaded.cash,cash);assert.equal(loaded.stats.battles,stats);assert.ok(E.action(loaded,'recruit','CHL').ok);
+});
+export function doubleAttack(){for(let seed=1;seed<500;seed++){const s=ownTurn();s.turn=5;s.seed=seed;s.phase='ai';s.ap=0;s.turnOrder=[{id:'ARG',power:9999},{id:'BOL',power:9999},{id:'CHL',power:1}];s.turnIndex=0;for(const c of Object.values(s.countries)){c.troops=999;c.fort=4;}for(const id of ['ARG','BOL']){s.countries[id].troops=1500;s.countries[id].armor=4;s.countries[id].air=4;}for(const id of ['CHL','PER','ECU']){s.countries[id].owner='CHL';s.countries[id].troops=1;s.countries[id].fort=0;}const first=E.skipToPlayer(s,{stopAtPlayerAttack:true});if(!first.interrupted||s.pendingBattle.target!=='CHL')continue;const check=structuredClone(s);clear(check);const second=E.skipToPlayer(check,{stopAtPlayerAttack:true});if(second.interrupted&&check.pendingBattle.target==='PER')return s;}throw new Error('No double attack found');}
+test('Skipping interrupts each attack on any player territory, preserves outcomes across reload, then reaches the player with movements intact',()=>{
+ const s=doubleAttack();assert.equal(s.countries.CHL.owner,'CHL');assert.equal(s.pendingBattle.target,'CHL');assert.equal(s.phase,'ai');const resumed=E.upgradeSave(s);assert.ok(resumed);E.finishBattle(resumed);assert.ok(resumed.pendingOccupation);clear(resumed);const again=E.skipToPlayer(resumed,{stopAtPlayerAttack:true});assert.equal(again.interrupted,true);assert.equal(resumed.pendingBattle.target,'PER');assert.equal(resumed.countries.PER.owner,'CHL');clear(resumed);resumed.movements=[{source:'ECU',target:'PER',owner:'CHL',troops:12,armor:1,air:1,sea:false}];const finished=E.skipToPlayer(resumed,{stopAtPlayerAttack:true});assert.equal(finished.interrupted,false);assert.equal(E.currentFaction(resumed),'CHL');assert.equal(resumed.movements.length,1);assert.equal(resumed.countries.PER.owner,'BOL');assert.equal(resumed.countries.ECU.owner,'CHL');
+});
+test('Calendar and faction controls communicate actual limits and escape player names',()=>{
+ const s=ownTurn();tick(s,8);const view=calendarView(s,()=>'<svg/>');assert.match(view,/Titulares ficticios/);assert.match(view,/4 rondas/);assert.equal((view.match(/class="calendar-day /g)||[]).length,42);const form=factionSetupView('CHL',{mode:'factions',name:'<b>Equipo</b> & Sur'},()=>'<svg/>');assert.doesNotMatch(form,/<b>Equipo<\/b>/);assert.match(form,/70 de confianza/);assert.match(form,/ronda 5/);
+});
